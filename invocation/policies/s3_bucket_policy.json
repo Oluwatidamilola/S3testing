@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "SSMWrite",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectacl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::${bucket_name}",
+                "arn:aws:s3:::${bucket_name}/*"
+	        ],
+            "Condition":
+                    {"StringEquals":
+                             {"aws:PrincipalOrgID": [ "${principal_org_id}" ]}
+
+	        },
+	        "Principal": "*"
+        }
+    ]
+        }
+
+    ]
+}
